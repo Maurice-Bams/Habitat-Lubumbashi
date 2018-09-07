@@ -5,14 +5,14 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">S'inscrire</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Nom</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -38,16 +38,15 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-                            <label for="status" class="col-md-4 control-label">Status</label>
+                        <div class="form-group{{ $errors->has('type_compte') ? ' has-error' : '' }}">
+                            <label for="type_compte" class="col-md-4 control-label">Type compte</label>
 
                             <div class="col-md-6">
-                                <input id="status" type="text" class="form-control" name="status" value="{{ old('status') }}" required autofocus>
+                                <input id="type_compte" type="text" class="form-control" name="type_compte" value="{{ old('type_compte') }}" required autofocus>
 
-                                @if ($errors->has('status'))
+                                @if ($errors->has('type_compte'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('status') }}</strong>
+                                        <strong>{{ $errors->first('type_compte') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -136,7 +135,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Valider
                                 </button>
                             </div>
                         </div>

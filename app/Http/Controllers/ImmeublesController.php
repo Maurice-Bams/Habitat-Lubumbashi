@@ -9,39 +9,61 @@ use Illuminate\Support\Facades\Auth;
 class ImmeublesController extends Controller
 {
 
- 	public function submit(Request $request){
 
- 		/*$this->validate($request, [
+    
+    /*public function submit(Request $request)
+    {
+            //vérification des attributs
+            $this->validate($request, [
 
-			'user_id' => 'required',
-			'adresse' => 'required',
-			'superficie' => 'required',
-			'usages' => 'required',
-			'pieces' => 'required',
-			'douches' => 'required',
-			'garantie' => 'required',
-			'mois' => 'required',
-			'description'   => 'required'
- 		]);*/
+                'ville'=> 'required',
+                'commune'=> 'required',
+                'avenue'=> 'required',
+                'numero'=> 'required',
+                'type_usage'=> 'required',
+                'superficie'=> 'required',
+                'montant_garantie'=> 'required',
+                'montant_loyer'=> 'required',
+                'image'=> 'required',
+                'description'=> 'required'
 
- 		//création d'un nouvel immeuble
- 		return "SUCCES";
+            ]);
+            //création de l'immeuble
+            $immeuble = new Immeubles;
+            $immeuble->ville = $request->input('ville');
+            $immeuble->commune = $request->input ('commune');
+            $immeuble->quartier = $request->input('avenue');
+            $immeuble->numero = $request->input('numero');
+            $immeuble->type_usage = $request->input('type_usage');
+            $immeuble->nombre_pieces = $request->input('nombre_pieces');
+            $immeuble->superficie = $request->input('superficie');
+            $immeuble->montant_garantie = $request->input('montant_garantie');
+            $immeuble->montant_loyer = $request->input('montant_loyer');
+            $immeuble->image = $request->input('image');
+            $immeuble->description = $request->input('description');
 
-	 	/*$Immeubles = new Immeubles;
-	    $Immeubles->user_id = $cur_us;
-	    $Immeubles->adresse = $request->input('adresse');
-	    $Immeubles->usages = $request->input('usages');
-	    $Immeubles->superficie = $request->input('superficie');
-	    $Immeubles->pieces = $request->input('pieces');
-	    $Immeubles->douches = $request->input('douches');
-	    $Immeubles->garantie = $request->input('garantie');
-	    $Immeubles->loyer = $request->input('loyer');
-	    $Immeubles->description = $request->input('description');  
-		
-		$Immeubles->save();
+            //sauvegarde immeuble
+            $immeuble->save();
 
-		//redirect
+            //redirection
+            return redirect('/');
+            
+    } */
 
-		return redirect('/');*/
-	}	  
+    public function create(array $data)
+    {
+        return Immeubles::create([
+            'ville' => $data['ville'],
+            'commune' => $data['commune'],
+            'quartier' => $data['quartier'],
+            'numero' => $data['numero'],
+            'type_usage' => $data['type_usage'],
+            'nombre_pieces' => $data['nombre_pieces'],
+            'superficie' => $data['superficie'],
+            'garantie' => $data['garantie'],
+            'montant_loyer' => $data['montant_loyer'],
+            'image' => $data['image'],
+            'description' => $data['description']
+        ]);
+    }
 }

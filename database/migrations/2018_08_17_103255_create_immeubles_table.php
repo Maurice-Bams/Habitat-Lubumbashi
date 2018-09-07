@@ -13,19 +13,22 @@ class CreateImmeublesTable extends Migration
      */
     public function up()
     {
-        Schema::create('immeubles', function (Blueprint $table) {
+        Schema::create('immeubles', function (Blueprint $table) 
+        {    
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('adresse',30);
-            $table->float('superficie',8);
-            $table->string('usages');
-            $table->integer('pieces');
+            $table->string('ville');
+            $table->string('commune');
+            $table->string('quartier');
+            $table->string('avenue');
+            $table->string('numero');
+            $table->string('type_usage');
+            $table->integer('nombre_pieces');
             $table->integer('douches');
-            $table->integer('garantie');
-            $table->string('loyer', 10);
+            $table->float('superficie');
+            $table->integer('montant_garantie');
+            $table->integer('montant_loyer');
             $table->string('image');
-            $table->string('description', 50);  
+            $table->string('description');  
             $table->timestamps();
         });
     }

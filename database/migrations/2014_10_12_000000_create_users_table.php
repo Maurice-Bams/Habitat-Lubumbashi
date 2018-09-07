@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('genre');
+            $table->string('type_compte');
             $table->string('profession');
             $table->string('adresse');
             $table->string('telephone');

@@ -18,51 +18,211 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Vous êtes bien connecté!
                 </div>
 
             </div>
 
-            <h1>Ajouter immeuble</h1>
+            <h2>Ajouter immeuble</h2>
             
-            {!! Form::open(['url' => 'immeubles/submit']) !!}
+            <form class="form-horizontal" method="POST" action="{{ route('immeubles') }}">
+                        {{ csrf_field() }}
 
-            <div class="form-group">
-                {{Form::label('adresse', 'Adresse')}}
-                {{Form::text('adresse', '',['class'=>'form-control', 'placeholder'=>'Adresse complète de l\'immeuble'])}}
-            </div>
-            <div class="form-group">
-                {{Form::label('usage', 'Usage')}}
-                {{Form::text('usage', '',['class'=>'form-control', 'placeholder'=>'commercial, socio-culturel, residentiel...'])}}
-            </div>
-            <div class="form-group">
-                {{Form::label('piece', 'Nombre des Pièces')}}
-                {{Form::text('piece', '',['class'=>'form-control', 'placeholder'=>'Entrez le nombre de pièces'])}}
-            </div>
-            <div class="form-group">
-                {{Form::label('superficie', 'Superficie')}}
-                {{Form::text('superficie', '',['class'=>'form-control', 'placeholder'=>'Saisir la superficie en m2'])}}
-            </div>
-            <div class="form-group">
-                {{Form::label('garantie', 'Garantie')}}
-                {{Form::text('garantie', '',['class'=>'form-control', 'placeholder'=>'Montant de garantie'])}}
-            </div>
-            <div class="form-group">
-                {{Form::label('loyer', 'Loyer')}}
-                {{Form::text('loyer', '',['class'=>'form-control', 'placeholder'=>'Loyer mensuel'])}}
-            </div>
-            <div class="form-group">
-                {{Form::label('image', 'Image')}}
-                {{Form::file('image', '',['class'=>'form-control', 'placeholder'=>'image de l\'immeuble'])}}
-            </div>
-            <div class="form-group">
-                {{Form::label('description', 'Description')}}
-                {{Form::textarea('description', '',['class'=>'form-control', 'placeholder'=>'Brêve description de l\'immeuble'])}}
-            </div>
-            <div>
-                {{Form::submit('submit', ['class'=> 'btn btn-primary'])}}
-            </div>
-            {!! Form::close() !!}
+                        <h5>Adresse de l'immeuble</h5>
+                        <div class="form-group{{ $errors->has('ville') ? ' has-error' : '' }}">
+                            <label for="ville" class="col-md-4 control-label">ville</label>
+
+                            <div class="col-md-6">
+                                <input id="ville" type="text" class="form-control" name="ville" value="{{ old('name') }}" required autofocus>
+
+                                @if ($errors->has('ville'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ville') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('commune') ? ' has-error' : '' }}">
+                            <label for="commune" class="col-md-4 control-label">commune</label>
+
+                            <div class="col-md-6">
+                                <input id="commune" type="text" class="form-control" name="commune" value="{{ old('commune') }}" required autofocus>
+
+                                @if ($errors->has('commune'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('commune') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('quartier') ? ' has-error' : '' }}">
+                            <label for="quartier" class="col-md-4 control-label">Quartier</label>
+
+                            <div class="col-md-6">
+                                <input id="quartier" type="text" class="form-control" name="quartier" value="{{ old('quartier') }}" required autofocus>
+
+                                @if ($errors->has('quartier'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('quartier') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('avenue') ? ' has-error' : '' }}">
+                            <label for="avenue" class="col-md-4 control-label">avenue</label>
+
+                            <div class="col-md-6">
+                                <input id="avenue" type="text" class="form-control" name="avenue" value="{{ old('avenue') }}" required autofocus>
+
+                                @if ($errors->has('avenue'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('avenue') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('numero') ? ' has-error' : '' }}">
+                            <label for="numero" class="col-md-4 control-label">numero</label>
+
+                            <div class="col-md-6">
+                                <input id="numero" type="text" class="form-control" name="numero" value="{{ old('numero') }}" required autofocus>
+
+                                @if ($errors->has('numero'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('numero') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('type_usage') ? ' has-error' : '' }}">
+                            <label for="type_usage" class="col-md-4 control-label">type_usage</label>
+
+                            <div class="col-md-6">
+                                <select name="type_usage" id="type_usage" class="form-control">
+                                    <option value="residentiel">Résidentiel</option>
+                                    <option value="commercial">Commercial</option>
+                                    <option value="socio_culturel">Socio-culturel</option>
+                                    
+                                </select>
+
+                                @if ($errors->has('type_usage'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('type_usage') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <h5>Autres renseignements</h5>
+                        <div class="form-group{{ $errors->has('nombre_pieces') ? ' has-error' : '' }}">
+                            <label for="nombre_pieces" class="col-md-4 control-label">nombre_pieces</label>
+
+                            <div class="col-md-6">
+                                <input id="nombre_pieces" type="text" class="form-control" name="nombre_pieces" value="{{ old('nombre_pieces') }}" required autofocus>
+
+                                @if ($errors->has('nombre_pieces'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nombre_pieces') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('nombre_douches') ? ' has-error' : '' }}">
+                            <label for="nombre_douches" class="col-md-4 control-label">nombre_douches</label>
+
+                            <div class="col-md-6">
+                                <input id="nombre_douches" type="text" class="form-control" name="nombre_douches" value="{{ old('nombre_douches') }}" required autofocus>
+
+                                @if ($errors->has('nombre_douches'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nombre_douches') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('superficie') ? ' has-error' : '' }}">
+                            <label for="superficie" class="col-md-4 control-label">superficie(m²)</label>
+
+                            <div class="col-md-6">
+                                <input id="superficie" type="text" class="form-control" name="superficie" value="{{ old('superficie') }}" required autofocus>
+
+                                @if ($errors->has('superficie'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('superficie') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('montant_garantie') ? ' has-error' : '' }}">
+                            <label for="montant_garantie" class="col-md-4 control-label">montant_garantie</label>
+
+                            <div class="col-md-6">
+                                <input id="montant_garantie" type="text" class="form-control" name="montant_garantie" value="{{ old('montant_garantie') }}" required autofocus>
+
+                                @if ($errors->has('montant_garantie'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('montant_garantie') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('montant_loyer') ? ' has-error' : '' }}">
+                            <label for="montant_loyer" class="col-md-4 control-label">montant_loyer</label>
+
+                            <div class="col-md-6">
+                                <input id="montant_loyer" type="text" class="form-control" name="montant_loyer" value="{{ old('montant_loyer') }}" required autofocus>
+
+                                @if ($errors->has('montant_loyer'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('montant_loyer') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                            <label for="image" class="col-md-4 control-label">image</label>
+
+                            <div class="col-md-6">
+                                <input id="image" type="file" class="form-control" name="image" value="{{ old('image') }}" required autofocus>
+
+                                @if ($errors->has('image'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                            <label for="description" class="col-md-4 control-label">description</label>
+
+                            <div class="col-md-6">
+                                <input id="description" type="textearea" class="form-control" name="description" value="{{ old('description') }}" required autofocus>
+
+                                @if ($errors->has('description'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Soumettre
+                                </button>
+                            </div>
+                        </div>
+                    </form>
         </div>
     </div>
 </div>
