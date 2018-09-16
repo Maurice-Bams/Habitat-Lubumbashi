@@ -11,16 +11,18 @@ class ImmeublesController extends Controller
 
 
     
-    /*public function submit(Request $request)
+    public function submit(Request $request)
     {
             //vérification des attributs
             $this->validate($request, [
 
                 'ville'=> 'required',
                 'commune'=> 'required',
+                'quartier'=> 'required',
                 'avenue'=> 'required',
                 'numero'=> 'required',
                 'type_usage'=> 'required',
+                'nombre_pieces'=> 'required',
                 'superficie'=> 'required',
                 'montant_garantie'=> 'required',
                 'montant_loyer'=> 'required',
@@ -32,7 +34,8 @@ class ImmeublesController extends Controller
             $immeuble = new Immeubles;
             $immeuble->ville = $request->input('ville');
             $immeuble->commune = $request->input ('commune');
-            $immeuble->quartier = $request->input('avenue');
+            $immeuble->quartier = $request->input('quartier');
+            $immeuble->avenue = $request->input('avenue');
             $immeuble->numero = $request->input('numero');
             $immeuble->type_usage = $request->input('type_usage');
             $immeuble->nombre_pieces = $request->input('nombre_pieces');
@@ -48,9 +51,9 @@ class ImmeublesController extends Controller
             //redirection
             return redirect('/');
             
-    } */
+    } 
 
-    public function create(array $data)
+    /*public function submit(array $data)
     {
         return Immeubles::create([
             'ville' => $data['ville'],
@@ -65,5 +68,5 @@ class ImmeublesController extends Controller
             'image' => $data['image'],
             'description' => $data['description']
         ]);
-    }
+    }*/
 }

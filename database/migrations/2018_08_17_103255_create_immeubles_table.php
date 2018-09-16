@@ -23,7 +23,6 @@ class CreateImmeublesTable extends Migration
             $table->string('numero');
             $table->string('type_usage');
             $table->integer('nombre_pieces');
-            $table->integer('douches');
             $table->float('superficie');
             $table->integer('montant_garantie');
             $table->integer('montant_loyer');

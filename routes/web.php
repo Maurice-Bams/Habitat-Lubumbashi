@@ -22,6 +22,6 @@ Route::get('/immeubles', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/immeubles/submit', 'ImmeublesController@submit')->name('immeubles');
+Route::post('/immeubles', 'ImmeublesController@submit')->name('immeubles');
 
 

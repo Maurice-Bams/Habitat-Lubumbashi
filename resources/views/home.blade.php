@@ -131,20 +131,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('nombre_douches') ? ' has-error' : '' }}">
-                            <label for="nombre_douches" class="col-md-4 control-label">nombre_douches</label>
-
-                            <div class="col-md-6">
-                                <input id="nombre_douches" type="text" class="form-control" name="nombre_douches" value="{{ old('nombre_douches') }}" required autofocus>
-
-                                @if ($errors->has('nombre_douches'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nombre_douches') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('superficie') ? ' has-error' : '' }}">
                             <label for="superficie" class="col-md-4 control-label">superficie(m²)</label>
 
