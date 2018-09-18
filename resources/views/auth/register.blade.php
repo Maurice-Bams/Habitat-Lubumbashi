@@ -29,7 +29,10 @@
                             <label for="genre" class="col-md-4 control-label">Genre</label>
 
                             <div class="col-md-6">
-                                <input id="genre" type="text" class="form-control" name="genre" value="{{ old('genre') }}" required autofocus>
+                                <select name="genre" id="genre" class="form-control">
+                                    <option value="Masculin">M</option>
+                                    <option value="Feminin">F</option>                                
+                                </select>
 
                                 @if ($errors->has('genre'))
                                     <span class="help-block">
@@ -42,11 +45,15 @@
                             <label for="type_compte" class="col-md-4 control-label">Type compte</label>
 
                             <div class="col-md-6">
-                                <input id="type_compte" type="text" class="form-control" name="type_compte" value="{{ old('type_compte') }}" required autofocus>
+                                <select name="type_compte" id="type_compte" class="form-control">
+                                    <option value="bailleur">Bailleur</option>
+                                    <option value="Locataire">Locataire</option>
+                                    
+                                </select>
 
-                                @if ($errors->has('type_compte'))
+                                @if ($errors->has('type_usage'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('type_compte') }}</strong>
+                                        <strong>{{ $errors->first('type_usage') }}</strong>
                                     </span>
                                 @endif
                             </div>

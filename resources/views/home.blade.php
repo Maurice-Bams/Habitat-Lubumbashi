@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Tableau de bord</div>
 
                     <!--div class="btn-add-im">
                         <button><a href="/immeubles"> Ajouter immeuble</a></button>
@@ -30,7 +30,7 @@
 
                         <h5>Adresse de l'immeuble</h5>
                         <div class="form-group{{ $errors->has('ville') ? ' has-error' : '' }}">
-                            <label for="ville" class="col-md-4 control-label">ville</label>
+                            <label for="ville" class="col-md-4 control-label">Ville</label>
 
                             <div class="col-md-6">
                                 <input id="ville" type="text" class="form-control" name="ville" value="{{ old('name') }}" required autofocus>
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('commune') ? ' has-error' : '' }}">
-                            <label for="commune" class="col-md-4 control-label">commune</label>
+                            <label for="commune" class="col-md-4 control-label">Commune</label>
 
                             <div class="col-md-6">
                                 <input id="commune" type="text" class="form-control" name="commune" value="{{ old('commune') }}" required autofocus>
@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('avenue') ? ' has-error' : '' }}">
-                            <label for="avenue" class="col-md-4 control-label">avenue</label>
+                            <label for="avenue" class="col-md-4 control-label">Avenue</label>
 
                             <div class="col-md-6">
                                 <input id="avenue" type="text" class="form-control" name="avenue" value="{{ old('avenue') }}" required autofocus>
@@ -85,7 +85,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('numero') ? ' has-error' : '' }}">
-                            <label for="numero" class="col-md-4 control-label">numero</label>
+                            <label for="numero" class="col-md-4 control-label">Numero</label>
 
                             <div class="col-md-6">
                                 <input id="numero" type="text" class="form-control" name="numero" value="{{ old('numero') }}" required autofocus>
@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('type_usage') ? ' has-error' : '' }}">
-                            <label for="type_usage" class="col-md-4 control-label">type_usage</label>
+                            <label for="type_usage" class="col-md-4 control-label">Type_usage</label>
 
                             <div class="col-md-6">
                                 <select name="type_usage" id="type_usage" class="form-control">
@@ -118,7 +118,7 @@
                         </div>
                         <h5>Autres renseignements</h5>
                         <div class="form-group{{ $errors->has('nombre_pieces') ? ' has-error' : '' }}">
-                            <label for="nombre_pieces" class="col-md-4 control-label">nombre_pieces</label>
+                            <label for="nombre_pieces" class="col-md-4 control-label">Nombre_pieces</label>
 
                             <div class="col-md-6">
                                 <input id="nombre_pieces" type="text" class="form-control" name="nombre_pieces" value="{{ old('nombre_pieces') }}" required autofocus>
@@ -132,7 +132,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('superficie') ? ' has-error' : '' }}">
-                            <label for="superficie" class="col-md-4 control-label">superficie(m²)</label>
+                            <label for="superficie" class="col-md-4 control-label">Superficie(m²)</label>
 
                             <div class="col-md-6">
                                 <input id="superficie" type="text" class="form-control" name="superficie" value="{{ old('superficie') }}" required autofocus>
@@ -146,7 +146,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('montant_garantie') ? ' has-error' : '' }}">
-                            <label for="montant_garantie" class="col-md-4 control-label">montant_garantie</label>
+                            <label for="montant_garantie" class="col-md-4 control-label">Montant_garantie</label>
 
                             <div class="col-md-6">
                                 <input id="montant_garantie" type="text" class="form-control" name="montant_garantie" value="{{ old('montant_garantie') }}" required autofocus>
@@ -160,7 +160,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('montant_loyer') ? ' has-error' : '' }}">
-                            <label for="montant_loyer" class="col-md-4 control-label">montant_loyer</label>
+                            <label for="montant_loyer" class="col-md-4 control-label">Montant_loyer</label>
 
                             <div class="col-md-6">
                                 <input id="montant_loyer" type="text" class="form-control" name="montant_loyer" value="{{ old('montant_loyer') }}" required autofocus>
@@ -174,7 +174,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                            <label for="image" class="col-md-4 control-label">image</label>
+                            <label for="image" class="col-md-4 control-label">Illustration</label>
 
                             <div class="col-md-6">
                                 <input id="image" type="file" class="form-control" name="image" value="{{ old('image') }}" required autofocus>
@@ -188,10 +188,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">description</label>
+                            <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="textearea" class="form-control" name="description" value="{{ old('description') }}" required autofocus>
+                                <input id="description" type="textarea" class="form-control" name="description" value="{{ old('description') }}" required autofocus>
 
                                 @if ($errors->has('description'))
                                     <span class="help-block">
