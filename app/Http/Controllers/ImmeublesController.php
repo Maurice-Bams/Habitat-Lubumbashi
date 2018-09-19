@@ -8,7 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class ImmeublesController extends Controller
 {
+    public function immeubles()
+    {
+        return ('immeubles');
+    }
 
+
+    public function show()
+    {
+        return ('immeubles');
+    }
 
     
     public function submit(Request $request)
@@ -49,24 +58,7 @@ class ImmeublesController extends Controller
             $immeuble->save();
 
             //redirection
-            return redirect('/');
+            return redirect('/confirmationSoumission');
             
     } 
-
-    /*public function submit(array $data)
-    {
-        return Immeubles::create([
-            'ville' => $data['ville'],
-            'commune' => $data['commune'],
-            'quartier' => $data['quartier'],
-            'numero' => $data['numero'],
-            'type_usage' => $data['type_usage'],
-            'nombre_pieces' => $data['nombre_pieces'],
-            'superficie' => $data['superficie'],
-            'garantie' => $data['garantie'],
-            'montant_loyer' => $data['montant_loyer'],
-            'image' => $data['image'],
-            'description' => $data['description']
-        ]);
-    }*/
 }
