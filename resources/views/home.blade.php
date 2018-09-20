@@ -17,12 +17,15 @@
                 </div>
 
             </div>
-
+        </div>
+    </div>
+      
             <h2>Ajouter immeuble</h2>
             
             <form class="form-horizontal" method="POST" action="{{ route('immeubles') }}">
                         {{ csrf_field() }}
-
+              <div class="row">
+                    <div class="col-md-6">
                         <h5>Adresse de l'immeuble</h5>
                         <div class="form-group{{ $errors->has('ville') ? ' has-error' : '' }}">
                             <label for="ville" class="col-md-4 control-label">Ville</label>
@@ -111,6 +114,10 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
+                
+                
+                    <div class="col-md-6">     
                         <h5>Autres renseignements</h5>
                         <div class="form-group{{ $errors->has('nombre_pieces') ? ' has-error' : '' }}">
                             <label for="nombre_pieces" class="col-md-4 control-label">Nombre_pieces</label>
@@ -203,8 +210,10 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
-        </div>
-    </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+                
 </div>
 @endsection
