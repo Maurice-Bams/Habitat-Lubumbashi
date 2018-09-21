@@ -11,7 +11,7 @@ Route::get('/immeubles', 'ImmeublesController@immeubles')->name('immeubles');
 Route::post('/immeubles', 'ImmeublesController@submit');
 Route::get('/confirmationSoumission', 'confirmationSoumission@confirmationSoumission');
 /*Route::get('/home', function(){
-	dump(DB::select('SELECT * from immeubles'))->name('home'); 
+	return ( DB::select('SELECT * from immeubles') ); 
 });*/
 
 

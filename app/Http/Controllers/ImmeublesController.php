@@ -17,8 +17,7 @@ class ImmeublesController extends Controller
    
     public function show($id)
     {
-        $user = User::select('name', 'id')->where('id', '!'= Auth::user()->id);
-        return view('/home', compact('users'));
+        return ( DB::select('SELECT * from immeubles') );
     }
     
 

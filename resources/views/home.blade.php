@@ -218,9 +218,7 @@
                         <div class="panel panel-primary">   
                             <div class="panel-heading">Immeubles en attente de validation</div>
                                 <div class="panel-body"> 
-                                    @foreach 
-                                        {{$user->name}}
-                                    @endforeach
+                                    
                                 </div>  
                         </div>              
                     </div>
