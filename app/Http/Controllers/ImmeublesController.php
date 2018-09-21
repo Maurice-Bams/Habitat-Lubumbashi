@@ -14,10 +14,13 @@ class ImmeublesController extends Controller
     }
 
 
-    public function show()
+   
+    public function show($id)
     {
-        return ('immeubles');
+        $user = User::select('name', 'id')->where('id', '!'= Auth::user()->id);
+        return view('/home', compact('users'));
     }
+    
 
     
     public function submit(Request $request)

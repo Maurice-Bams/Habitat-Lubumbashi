@@ -212,8 +212,21 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-primary">   
+                            <div class="panel-heading">Immeubles en attente de validation</div>
+                                <div class="panel-body"> 
+                                    @foreach 
+                                        {{$user->name}}
+                                    @endforeach
+                                </div>  
+                        </div>              
+                    </div>
+                </div>
+                <br>  
             </div>
-        </form>
-                
+        </form>            
 </div>
 @endsection
