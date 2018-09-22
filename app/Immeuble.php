@@ -5,8 +5,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Immeubles extends Model
+class Immeuble extends Model
 {
+    const VERIFIED_IMMEUBLE = '1';
+    const UNVERIFIED_IMMEUBLE = '0';
+
+    protected $table = "immeubles";
+
 	protected $fillable = [
         'ville',
         'commune',
@@ -20,5 +25,6 @@ class Immeubles extends Model
         'montant_loyer',
         'image',
         'description',
+        'verified'
     ];
 }
