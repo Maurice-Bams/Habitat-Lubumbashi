@@ -25,28 +25,22 @@
 <body>
     <header class="header">
         <div id="app">
-            <nav class="navbar navbar-default">
+            <nav class="navbar navbar navbar-dark bg-primary">
                 <div class="container">
-                    <div class="navbar-header">
-
-                        <!-- Collapsed Hamburger -->
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                            <span class="sr-only">Toggle Navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-
-                        <!-- Branding Image -->
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                            {{ config('app.name', 'HL') }}
-                        </a>
-                    </div>
-
+                    <!-- Branding Image -->
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'HL') }}
+                    </a>
+                    <!-- Collapsed Hamburger -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="#app-navbar-collapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">
                         <!-- Left Side Of Navbar -->
                         <ul class="nav navbar-nav">
-                            &nbsp;
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Immeubles</a>
+                            </li>
                         </ul>
 
                         <!-- Right Side Of Navbar -->

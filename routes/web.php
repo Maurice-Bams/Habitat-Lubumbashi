@@ -3,7 +3,6 @@
 Auth::routes();
 
 //routes sur la vue welcome
-Route::get('/', 'WelcomeController@index');
 
 
 //routes sur les immeubles
@@ -13,7 +12,8 @@ Route::post('/immeubles', 'ImmeubleController@store')->name('immeubles.store');
 Route::get('/confirmationSoumission', 'confirmationSoumission@confirmationSoumission');
 
 //routes sur le tableau de bord
-Route::get('/', 'ImmeubleController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/immeubles', 'ImmeubleController@index')->name('immeubles');
 
 
 

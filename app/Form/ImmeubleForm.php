@@ -19,7 +19,7 @@ class ImmeubleForm extends Form
             ->add('montant_garantie', 'number', ['label' => 'Montant garantie', 'rules'=> 'required|numeric'])
             ->add('montant_loyer', 'number', ['label' => 'Montant loyer', 'rules'=> 'required|numeric'])
             ->add('description', 'textarea', ['label' => 'Description', 'rules' => 'string'])
-            ->add('image', 'string',['label' => 'Image', 'rules' => 'image'])
+            ->add('image', 'text',['label' => 'Image', 'rules' => 'image'])
             ->add('submit', 'submit', ['label' => 'Enregistrer']);
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use App\Immeuble;
 
 class HomeController extends Controller
 {
@@ -14,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -24,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $immeubles = Immeuble::where("verified", Immeuble::UNVERIFIED_IMMEUBLE)->paginate(10);
+        return View::make('home', compact('immeubles'));
     }
 
 

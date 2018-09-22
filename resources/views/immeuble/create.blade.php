@@ -13,18 +13,24 @@
                 {!! form_row($form->quartier) !!}
                 {!! form_row($form->numero) !!}
                 {!! form_row($form->avenue) !!}
-                {!! form_row($form->type_usage) !!}
             </div>
             <div class="col-sm-4">
+                {!! form_row($form->type_usage) !!}
                 {!! form_row($form->nombre_piece) !!}
                 {!! form_row($form->superficie) !!}
                 {!! form_row($form->montant_garantie) !!}
                 {!! form_row($form->montant_loyer) !!}
             </div>
             <div class="col-sm-4">
+                {!! form_row($form->description) !!}
+                {!! form_row($form->image) !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
                 {!! form_rest($form) !!}
             </div>
         </div>
-        {!! form_end($form) !!}
+        
     </div>
 @endsection

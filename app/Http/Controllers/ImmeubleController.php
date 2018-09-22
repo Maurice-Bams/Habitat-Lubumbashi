@@ -7,13 +7,16 @@ use App\Immeubles;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use App\Immeuble;
-use Form\ImmeubleForm;
+use App\Form\ImmeubleForm;
+use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 class ImmeubleController extends Controller
 {
+    use FormBuilderTrait;
+
     public function index()
     {
-        $immeubles = Immeuble::paginate(10);
+        $immeubles = Immeuble::where('verified', Immeuble::VERIFIED_IMMEUBLE)->paginate(10);
         return View::make('immeuble.index', compact('immeubles'));
     }
 
@@ -23,7 +26,6 @@ class ImmeubleController extends Controller
             'method' => 'POST',
             'route' => 'immeubles.store'
         ]);
-        dd($form);
         return View::make('immeuble.create', compact('form'));
     }
 
