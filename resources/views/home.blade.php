@@ -2,9 +2,41 @@
 
 @section('content')
     <div class="row">
+        <div class="col-sm-12">
+            <div class="page-header">
+                <h3>Ajouter un immeuble</h3>
+            </div>
+            {!! form_start($form) !!}
+            <div class="row">
+                <div class="col-sm-4">
+                    {!! form_row($form->ville) !!}
+                    {!! form_row($form->commune) !!}
+                    {!! form_row($form->quartier) !!}
+                    {!! form_row($form->numero) !!}
+                    {!! form_row($form->avenue) !!}
+                </div>
+                <div class="col-sm-4">
+                    {!! form_row($form->type_usage) !!}
+                    {!! form_row($form->nombre_piece) !!}
+                    {!! form_row($form->superficie) !!}
+                    {!! form_row($form->montant_garantie) !!}
+                    {!! form_row($form->montant_loyer) !!}
+                </div>
+                <div class="col-sm-4">
+                    {!! form_row($form->description) !!}
+                    {!! form_row($form->image) !!}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 offset-sm-4">
+                    {!! form_rest($form) !!}
+                </div>
+            </div>
+            
+        </div>
         <div class="col-12">
             <div class="page-header">
-                <h1>Liste d'immeubles</h1>
+                <h3>Liste d'immeubles</h3>
             </div>
             <table class="table table-hover table-sm table-bordered">
             	<thead class="thead-dark">

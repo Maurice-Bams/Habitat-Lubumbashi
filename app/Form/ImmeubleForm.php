@@ -12,7 +12,7 @@ class ImmeubleForm extends Form
             ->add('commune', 'text', ['label' => 'Commune', 'rules' => 'required|string'])
             ->add('quartier', 'text', ['label' => 'Quartier', 'rules' => 'required|string'])
             ->add('avenue', 'text', ['label' => 'Avenue', 'rules' => 'required|string'])
-            ->add('numero', 'number', ['label' => 'Numero', 'rules' => 'required|number'])
+            ->add('numero', 'number', ['label' => 'Numero', 'rules' => 'required|numeric'])
             ->add('type_usage', 'text', ['label' => 'Type d\'usage', 'rules' => 'required|string'])
             ->add('nombre_piece', 'number', ['label' => 'Nombre de pièces', 'rules'=> 'required|numeric'])
             ->add('superficie', 'text', ['label' => 'Superficie', 'rules' => 'required|numeric'])

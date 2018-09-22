@@ -16,7 +16,7 @@ class ImmeubleController extends Controller
 
     public function index()
     {
-        $immeubles = Immeuble::where('verified', Immeuble::VERIFIED_IMMEUBLE)->paginate(10);
+        $immeubles = Immeuble::paginate(10);
         return View::make('immeuble.index', compact('immeubles'));
     }
 
