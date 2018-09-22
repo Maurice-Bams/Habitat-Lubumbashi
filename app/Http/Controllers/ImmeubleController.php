@@ -7,7 +7,7 @@ use App\Immeubles;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use App\Immeuble;
-use Form\Immeuble;
+use Form\ImmeubleForm;
 
 class ImmeubleController extends Controller
 {
@@ -17,17 +17,13 @@ class ImmeubleController extends Controller
         return View::make('immeuble.index', compact('immeubles'));
     }
 
-    public function immeubles()
-    {
-        return ('immeubles');
-    }
-
     public function create()
     {
         $form = $this->form(ImmeubleForm::class, [
             'method' => 'POST',
             'route' => 'immeubles.store'
         ]);
+        dd($form);
         return View::make('immeuble.create', compact('form'));
     }
 

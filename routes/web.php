@@ -7,12 +7,13 @@ Route::get('/', 'WelcomeController@index');
 
 
 //routes sur les immeubles
-Route::get('/immeubles', 'ImmeublesController@immeubles')->name('immeubles');
-Route::post('/immeubles', 'ImmeublesController@submit');
+Route::get('/immeubles', 'ImmeubleController@index')->name('immeubles.index');
+Route::get('/immeubles/nouveau', 'ImmeubleController@create')->name('immeubles.create');
+Route::post('/immeubles', 'ImmeubleController@store')->name('immeubles.store');
 Route::get('/confirmationSoumission', 'confirmationSoumission@confirmationSoumission');
 
 //routes sur le tableau de bord
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'ImmeubleController@index')->name('home');
 
 
 

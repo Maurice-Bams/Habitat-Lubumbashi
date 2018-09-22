@@ -27,4 +27,10 @@ class Immeuble extends Model
         'description',
         'verified'
     ];
+
+    public function getAdresseAttribute()
+    {
+        // '8888 Cummings Vista Apt. 101, Susanbury, NY 95473'
+        return "{$this->numero}, {$this->avenue}, {$this->quartier}/{$this->ville}";
+    }
 }

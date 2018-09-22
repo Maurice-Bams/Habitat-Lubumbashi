@@ -9,12 +9,13 @@
             <table class="table table-hover">
             	<thead>
             		<tr>
-                        <th>Avénue</th>
-                        <th>Quartier</th>
-                        <th>Commune</th>
-                        <th>Ville</th>
-                        <th>Garantie</th>
+                        <th>Adress</th>
+                        <th>Type Usage</th>
+                        <th>Nombre pièces</th>
+                        <th>Superficie</th>
                         <th>Loyer</th>
+                        <th>Garantie</th>
+                        <th>Verifié</th>
                         <th>Actions</th>
             		</tr>
             	</thead>
@@ -22,22 +23,21 @@
                     @if(count($immeubles))
                         @foreach($immeubles as $immeuble)
                             <tr>
-                                <td>{{ $immeuble->address }}</td>
-                                <td>{{ $immeuble->ville }}</td>
+                                <td>{{ $immeuble->adresse }}</td>
                                 <td>{{ $immeuble->type_usage }}</td>
                                 <td>{{ $immeuble->nombre_pieces }}</td>
-                                <td>{{ $immeuble->superficie }} $</td>
+                                <td>{{ $immeuble->superficie }} m2</td>
                                 <td>{{ $immeuble->montant_loyer }} $</td>
                                 <td>{{ $immeuble->montant_garantie }} $</td>
+                                <td>@if($immeuble->verified == "true")<span class="badge badge-success">Oui</span>@else <span class="badge badge-warning">En attente</span> @endif </td>
                                 <td>
-                                    <a href="{{ route('immeubles.show', $immeuble->id) }}" class="btn btn-primary"><i class="fa fa-info-circle"></i></a>
-                                    <a href="{{ route('immeubles.edit', $immeuble->id) }}" class="btn btn-default"><i class="fa fa-edit"></i> Modifier</a>
-                                    <form action="{{ route('immeubles.destroy', $immeuble) }}" method="POST" style="display: inline-block;">
+                                    <a href="#" class="btn btn-primary"><i class="fa fa-info-circle"></i></a>
+                                    <a href="#" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                    <form action="#" method="POST" style="display: inline-block;">
                                         {{ csrf_field() }}
                                         {{ method_field('delete') }}
                                         <button class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
-                                            Supprimer
                                         </button>
                                     </form>
                                 </td>
