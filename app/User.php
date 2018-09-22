@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    const REGULAR_USER = 'false';
+    const ADMIN_USER = 'true';
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +17,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','genre','type_compte','profession','adresse','telephone', 'email', 'password',
+        'name',
+        'genre',
+        'type_compte',
+        'profession',
+        'adresse',
+        'telephone', 
+        'email', 
+        'password',
+        'admin',
     ];
 
     /**
