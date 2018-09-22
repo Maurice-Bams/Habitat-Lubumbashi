@@ -27,7 +27,7 @@ class CreateImmeublesTable extends Migration
             $table->float('superficie');
             $table->integer('montant_garantie');
             $table->integer('montant_loyer');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('description'); 
             $table->string('verified')->default(Immeuble::UNVERIFIED_IMMEUBLE);
             $table->timestamps();
