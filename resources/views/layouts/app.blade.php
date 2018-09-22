@@ -12,19 +12,19 @@
 
     <!-- Styles--> 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!--
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">-->
+    <!--<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-    <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-    <link rel="stylesheet" type="text/css" href="styles/responsive.css">-->
+    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">-
+    <link rel="stylesheet" type="text/css" href="styles/main_styles.css">-->
+    <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 </head>
 <body>
     <header class="header">
         <div id="app">
-            <nav class="navbar navbar-default navbar-static-top">
+            <nav class="navbar navbar-default">
                 <div class="container">
                     <div class="navbar-header">
 
@@ -64,8 +64,8 @@
                                         <li>
                                             <a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                                Se deconnecté
+                                                    document.getElementById('logout-form').submit();">
+                                                Déconnexion
                                             </a>
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -79,9 +79,8 @@
                     </div>
                 </div>
             </nav>
-
             @yield('content')
-        </div>
+        
     </header>
 
     <!-- Scripts -->
