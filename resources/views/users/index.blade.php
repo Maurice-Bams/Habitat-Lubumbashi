@@ -10,34 +10,26 @@
             	<thead class="thead-dark">
             		<tr>
                         <th>#</th>
-                        <th>Adress</th>
-                        <th>Type Usage</th>
-                        <th>Nombre pièces</th>
-                        <th>Superficie</th>
-                        <th>Loyer</th>
-                        <th>Garantie</th>
-                        <th>Verifié</th>
-                        <th>Actions</th>
+                        <th>Nom</th>
+                        <th>Genre</th>
+                        <th>Profession</th>
+                        <th>Type de compte</th>
+                        <th>Options</th>
             		</tr>
             	</thead>
             	<tbody class="text-sm">
-                    @if(count($immeubles))
-                        @foreach($immeubles as $immeuble)
+                    @if(count($users))
+                        @foreach($users as $user)
                             <tr>
-                                <td>{{ $loop->index }}</td>
-                                <td>{{ $immeuble->adresse }}</td>
-                                <td>{{ $immeuble->type_usage }}</td>
-                                <td>{{ $immeuble->nombre_pieces }}</td>
-                                <td>{{ $immeuble->superficie }} m2</td>
-                                <td>{{ $immeuble->montant_loyer }} $</td>
-                                <td>{{ $immeuble->montant_garantie }} $</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->genre }}</td>
+                                <td>{{ $user->profession }}</td>
+                                <td>{{ $user->type_compte }}</td>
                                 <td>
-                                    @if($immeuble->verified == "1")
-                                        <span class="text-success fa fa-check-circle"></span> 
-                                        <a href="{{ route('immeubles.unverified', [ 'id' => $immeuble->id ]) }}" data-toggle="tooltip" data-placement="bottom" title="Click pour désactiver la vérification"><span class="badge badge-success">Oui</span></a>
+                                    @if($user->admin == "true")
+                                        <span class="text-success">Administrateur</span> 
                                     @else
-                                        <span class="text-danger fa fa-exclamation-triangle"></span>
-                                        <a href="{{ route('immeubles.verified', [ 'id' => $immeuble->id ]) }}" data-toggle="tooltip" data-placement="bottom" title="Click pour vérifier"><span class="badge badge-warning">En attente</span</a>
+                                        <span class="text-default">Normal</span>
                                     @endif
                                 </td>
                                 <td>
@@ -62,7 +54,7 @@
                     @endif
             	</tbody>
             </table>
-            {{ $immeubles->links('vendor.pagination.simple-bootstrap-4') }}
+            {{ $users->links('vendor.pagination.simple-bootstrap-4') }}
         </div>
     </div>
 @endsection

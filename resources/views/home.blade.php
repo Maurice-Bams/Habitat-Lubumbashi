@@ -57,23 +57,15 @@
                         @foreach($immeubles as $immeuble)
                             <tr>
                                 <td>{{ $loop->index }}</td>
-                                <td>{{ $immeuble->adresse }}</td>
+                                <td><a href="{{ route('immeubles.show', ['id' => $immeuble->id ])}}" class="btn btn-link btn-sm">{{ $immeuble->adresse }}</a></td>
                                 <td>{{ $immeuble->type_usage }}</td>
                                 <td>{{ $immeuble->nombre_pieces }}</td>
                                 <td>{{ $immeuble->superficie }} m2</td>
                                 <td>{{ $immeuble->montant_loyer }} $</td>
                                 <td>{{ $immeuble->montant_garantie }} $</td>
-                                <td>@if($immeuble->verified == "1")<span class="badge badge-success">Oui</span>@else <span class="badge badge-warning">En attente</span> @endif </td>
+                                <td>@if($immeuble->verified == "1")<span class="badge badge-success">Oui</span>@else<span class="text-danger fa fa-exclamation-triangle"></span> <span class="badge badge-warning">En attente</span> @endif </td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-info-circle"></i></a>
-                                    <a href="#" class="btn btn-outline-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                    <form action="#" method="POST" style="display: inline-block;">
-                                        {{ csrf_field() }}
-                                        {{ method_field('delete') }}
-                                        <button class="btn btn-danger btn-sm">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    <a href="{{ route('immeubles.show', ['id' => $immeuble->id ])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -86,7 +78,7 @@
                     @endif
             	</tbody>
             </table>
-            {{ $immeubles->links() }}
+            {{ $immeubles->links('vendor.pagination.simple-bootstrap-4') }}
         </div>
     </div>
 @endsection

@@ -14,6 +14,11 @@ class ImmeubleController extends Controller
 {
     use FormBuilderTrait;
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $immeubles = Immeuble::paginate(10);
@@ -44,45 +49,23 @@ class ImmeubleController extends Controller
 
     }
     
-    public function submit(Request $request)
+    public function verified($id)
     {
-            //vérification des attributs
-            $this->validate($request, [
+        $immeuble = Immeuble::findOrFail($id);
+        $immeuble->update(['verified' => Immeuble::VERIFIED_IMMEUBLE]);
+        return redirect()->back()->with('success', "L'immeuble a bien été marqué vérifier");
+    }
 
-                'ville'=> 'required',
-                'commune'=> 'required',
-                'quartier'=> 'required',
-                'avenue'=> 'required',
-                'numero'=> 'required',
-                'type_usage'=> 'required',
-                'nombre_pieces'=> 'required',
-                'superficie'=> 'required',
-                'montant_garantie'=> 'required',
-                'montant_loyer'=> 'required',
-                'image'=> 'required',
-                'description'=> 'required'
+    public function unverified($id)
+    {
+        $immeuble = Immeuble::findOrFail($id);
+        $immeuble->update(['verified' => Immeuble::UNVERIFIED_IMMEUBLE]);
+        return redirect()->back()->with('success', "L'immeuble a bien été marqué comme non vérifier");
+    }
 
-            ]);
-            //création de l'immeuble
-            $immeuble = new Immeubles;
-            $immeuble->ville = $request->input('ville');
-            $immeuble->commune = $request->input ('commune');
-            $immeuble->quartier = $request->input('quartier');
-            $immeuble->avenue = $request->input('avenue');
-            $immeuble->numero = $request->input('numero');
-            $immeuble->type_usage = $request->input('type_usage');
-            $immeuble->nombre_pieces = $request->input('nombre_pieces');
-            $immeuble->superficie = $request->input('superficie');
-            $immeuble->montant_garantie = $request->input('montant_garantie');
-            $immeuble->montant_loyer = $request->input('montant_loyer');
-            $immeuble->image = $request->input('image');
-            $immeuble->description = $request->input('description');
-
-            //sauvegarde immeuble
-            $immeuble->save();
-
-            //redirection
-            return redirect('/confirmationSoumission');
-            
-    } 
+    public function show($id)
+    {
+        $immeuble = Immeuble::findOrFail($id);
+        return View::make('immeuble.show', compact('immeuble'));
+    }
 }

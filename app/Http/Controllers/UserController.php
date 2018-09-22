@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use App\User;
 
 class UserController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
 	 * Display a listing of the resource.
 	 *
@@ -13,7 +20,8 @@ class UserController extends Controller
 	 */
 	public function index()
 	{
-		//
+		$users = User::paginate(6);
+		return View::make('users.index', compact('users'));
 	}
 
 	/**
