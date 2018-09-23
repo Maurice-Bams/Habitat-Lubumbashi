@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Immeuble;
 
 class CreateImmeublesTable extends Migration
 {
@@ -26,8 +27,9 @@ class CreateImmeublesTable extends Migration
             $table->float('superficie');
             $table->integer('montant_garantie');
             $table->integer('montant_loyer');
-            $table->string('image');
-            $table->string('description');  
+            $table->string('image')->nullable();
+            $table->text('description'); 
+            $table->string('verified')->default(Immeuble::UNVERIFIED_IMMEUBLE);
             $table->timestamps();
         });
     }
