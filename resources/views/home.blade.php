@@ -44,11 +44,10 @@
                 </div>
                 <br>  
             </div>
-<<<<<<< HEAD
+
         </form>            
 </div>
-@endsection
-=======
+
             
         </div>
         <div class="col-12">
@@ -89,7 +88,7 @@
                     @else
                         <tr>
                             <td colspan="6" class="text-info text-center">
-                                <strong>Aucun n'immeuble n'est enregistré.</strong>
+                                <strong>Aucun immeuble n'est enregistré.</strong>
                             </td>
                         </tr>
                     @endif
@@ -99,4 +98,4 @@
         </div>
     </div>
 @endsection
->>>>>>> 36be2b59f0f5a2703792604cf2e1d4721c552bb7
+
