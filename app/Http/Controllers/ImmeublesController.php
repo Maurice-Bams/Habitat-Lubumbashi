@@ -14,10 +14,12 @@ class ImmeublesController extends Controller
     }
 
 
-    public function show()
+   
+    public function show($id)
     {
-        return ('immeubles');
+        return ( DB::select('SELECT * from immeubles') );
     }
+    
 
     
     public function submit(Request $request)

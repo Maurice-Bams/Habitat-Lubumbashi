@@ -10,9 +10,12 @@ Route::get('/', 'WelcomeController@index');
 Route::get('/immeubles', 'ImmeublesController@immeubles')->name('immeubles');
 Route::post('/immeubles', 'ImmeublesController@submit');
 Route::get('/confirmationSoumission', 'confirmationSoumission@confirmationSoumission');
+/*Route::get('/home', function(){
+	return ( DB::select('SELECT * from immeubles') ); 
+});*/
+
+
 
 //routes sur le tableau de bord
 Route::get('/home', 'HomeController@index')->name('home');
-
-
 
