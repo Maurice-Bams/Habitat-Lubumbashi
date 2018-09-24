@@ -1,5 +1,9 @@
-<?
+<?php
+
 namespace App\Http\Controllers;
+
+use App\Immeuble;
+use Illuminate\Support\Facades\Auth;
 
 class PaiementController extends Controller
 {
@@ -8,7 +12,8 @@ class PaiementController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function louer($id) {
+    public function louer($id) 
+    {
         $immeuble = Immeuble::findOrFail($id);
         $immeuble->update(['user_id' => Auth::user()->id]);
         return redirect(route('immeubles.index'))->with('success', 'Votre action a réussit');

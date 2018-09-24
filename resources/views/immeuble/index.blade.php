@@ -11,9 +11,6 @@
             		<tr>
                         <th>#</th>
                         <th>Adress</th>
-                        <th>Type Usage</th>
-                        <th>Nombre pièces</th>
-                        <th>Superficie</th>
                         <th>Loyer</th>
                         <th>Garantie</th>
                         <th>Verifié</th>
@@ -26,13 +23,10 @@
                             <tr>
                                 <td>{{ $loop->index }}</td>
                                 <td>{{ $immeuble->adresse }}</td>
-                                <td>{{ $immeuble->type_usage }}</td>
-                                <td>{{ $immeuble->nombre_pieces }}</td>
-                                <td>{{ $immeuble->superficie }} m2</td>
                                 <td>{{ $immeuble->montant_loyer }} $</td>
                                 <td>{{ $immeuble->montant_garantie }} $</td>
                                 <td>
-                                    @if($immeuble->verified == "1")
+                                    @if($immeuble->verified == \App\Immeuble::VERIFIED_IMMEUBLE)
                                         <span class="text-success fa fa-check-circle"></span> 
                                         <a href="{{ route('immeubles.unverified', [ 'id' => $immeuble->id ]) }}" data-toggle="tooltip" data-placement="bottom" title="Click pour désactiver la vérification"><span class="badge badge-success">Oui</span></a>
                                     @else
@@ -41,20 +35,20 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if($immeuble->verified || ($immeuble->locataire && $immeuble->locataire->id != Auth::user()->id))
-                                        @if(!$immeuble->locataire)
-                                            <a href="{{ route('paiements.louer', ['id' => $immeuble->id ]) }}" class="btn btn-success btn-sm"><i class="fa fa-money"></i></a>
-                                        @endif
+                                    @if(($immeuble->verified == \App\Immeuble::VERIFIED_IMMEUBLE && !$immeuble->locataire ) && !Auth::user()->isAdmin())
+                                        <a href="{{ route('paiements.louer', ['id' => $immeuble->id ]) }}" class="btn btn-success btn-sm"><i class="fa fa-money"></i> Louer</a>
                                     @endif
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-info-circle"></i></a>
-                                    <a href="#" class="btn btn-outline-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                    <form action="#" method="POST" style="display: inline-block;">
-                                        {{ csrf_field() }}
-                                        {{ method_field('delete') }}
-                                        <button class="btn btn-danger btn-sm">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    <a href="{{ route('immeubles.show', ['id' => $immeuble->id ]) }}" class="btn btn-primary btn-sm"><i class="fa fa-info-circle"></i> Detail</a>
+                                    @if(Auth::user()->isAdmin())
+                                        <a href="#" class="btn btn-outline-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                        <form action="#" method="POST" style="display: inline-block;">
+                                            {{ csrf_field() }}
+                                            {{ method_field('delete') }}
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash"></i> Supprimer
+                                            </button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

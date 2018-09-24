@@ -40,9 +40,9 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function locations()
+    public function location()
     {
-        return $this->hasMany(Immeuble::class);
+        return $this->hasOne(Immeuble::class);
     }
 
     public function isAdmin()
