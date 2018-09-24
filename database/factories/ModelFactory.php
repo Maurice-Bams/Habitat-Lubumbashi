@@ -25,6 +25,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'telephone' => $faker->e164PhoneNumber,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('123456'),
+        'role_id' => $num = $faker->numberBetween(1, 3)
     ];
 });
 
@@ -35,11 +36,11 @@ $factory->define(App\Immeuble::class, function (Faker\Generator $faker) {
     $types = ['Entrepot', 'Habitat', 'Location'];
     return [
         'ville' => $faker->city,
-        'commune' => $faker->randomElement($communes),
-        'quartier' => $faker->randomElement($quartier),
+        'commune' => $commune = $faker->randomElement($communes),
+        'quartier' => $quartier = $faker->randomElement($quartier),
         'avenue' => $faker->streetName,
         'numero' => $faker->buildingNumber,
-        'type_usage' => $faker->randomElement($types),
+        'type_usage' => $type_usage = $faker->randomElement($types),
         'nombre_pieces' => $faker->randomDigitNotNull,
         'superficie' => $faker->randomDigitNotNull,
         'montant_garantie' => $faker->randomDigitNotNull,

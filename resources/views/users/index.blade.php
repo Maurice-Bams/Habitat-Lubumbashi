@@ -11,9 +11,9 @@
             		<tr>
                         <th>#</th>
                         <th>Nom</th>
-                        <th>Genre</th>
+                        <th>Email</th>
                         <th>Profession</th>
-                        <th>Type de compte</th>
+                        <th>Role</th>
                         <th>Options</th>
             		</tr>
             	</thead>
@@ -21,19 +21,14 @@
                     @if(count($users))
                         @foreach($users as $user)
                             <tr>
+                                <td>{{ $loop->index }}</td>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->genre }}</td>
+                                <td>{{ $user->email }}</td>
                                 <td>{{ $user->profession }}</td>
-                                <td>{{ $user->type_compte }}</td>
-                                <td>
-                                    @if($user->admin == "true")
-                                        <span class="text-success">Administrateur</span> 
-                                    @else
-                                        <span class="text-default">Normal</span>
-                                    @endif
-                                </td>
+                                <td>{{ $user->role->title }}</td>
                                 <td>
                                     <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-info-circle"></i></a>
+                                    @if(Auth::user()->isAdmin())
                                     <a href="#" class="btn btn-outline-warning btn-sm"><i class="fa fa-edit"></i></a>
                                     <form action="#" method="POST" style="display: inline-block;">
                                         {{ csrf_field() }}
@@ -42,6 +37,7 @@
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

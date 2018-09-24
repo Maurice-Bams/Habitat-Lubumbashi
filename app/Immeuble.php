@@ -25,12 +25,18 @@ class Immeuble extends Model
         'montant_loyer',
         'image',
         'description',
-        'verified'
+        'verified',
+        'user_id'
     ];
 
     public function getAdresseAttribute()
     {
         // '8888 Cummings Vista Apt. 101, Susanbury, NY 95473'
         return "{$this->numero}, {$this->avenue}, {$this->quartier}/{$this->ville}";
+    }
+
+    public function locataire()
+    {
+        return $this->belongsTo(User::class);
     }
 }

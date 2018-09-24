@@ -41,6 +41,11 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($immeuble->verified || ($immeuble->locataire && $immeuble->locataire->id != Auth::user()->id))
+                                        @if(!$immeuble->locataire)
+                                            <a href="{{ route('paiements.louer', ['id' => $immeuble->id ]) }}" class="btn btn-success btn-sm"><i class="fa fa-money"></i></a>
+                                        @endif
+                                    @endif
                                     <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-info-circle"></i></a>
                                     <a href="#" class="btn btn-outline-warning btn-sm"><i class="fa fa-edit"></i></a>
                                     <form action="#" method="POST" style="display: inline-block;">
