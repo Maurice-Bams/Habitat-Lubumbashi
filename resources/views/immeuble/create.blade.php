@@ -23,7 +23,7 @@
             </div>
             <div class="col-sm-4">
                 {!! form_row($form->description) !!}
-                {!! form_row($form->image) !!}
+                
             </div>
         </div>
         <div class="row">

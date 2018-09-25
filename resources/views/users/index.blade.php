@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-header">
-                <h1>Liste d'immeubles <a href="{{ route('immeubles.create') }}" class="btn btn-info"><span class="fa fa-plus"><span> Ajouter</a></h1>
+                <h1>Liste des utilisateurs <a href="{{ route('users.index') }}" class="btn btn-info"><span class="fa fa-plus"><span> Ajouter</a></h1>
             </div>
             <table class="table table-hover table-sm table-bordered">
             	<thead class="thead-dark">
@@ -21,6 +21,7 @@
                     @if(count($users))
                         @foreach($users as $user)
                             <tr>
+                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->genre }}</td>
                                 <td>{{ $user->profession }}</td>

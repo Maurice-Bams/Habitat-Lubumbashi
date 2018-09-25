@@ -15,11 +15,11 @@ class ImmeubleForm extends Form
             ->add('numero', 'number', ['label' => 'Numero', 'rules' => 'required|numeric'])
             ->add('type_usage', 'text', ['label' => 'Type d\'usage', 'rules' => 'required|string'])
             ->add('nombre_piece', 'number', ['label' => 'Nombre de pièces', 'rules'=> 'required|numeric'])
-            ->add('superficie', 'text', ['label' => 'Superficie', 'rules' => 'required|numeric'])
+            ->add('superficie', 'number', ['label' => 'Superficie', 'rules' => 'required|numeric'])
             ->add('montant_garantie', 'number', ['label' => 'Montant garantie', 'rules'=> 'required|numeric'])
             ->add('montant_loyer', 'number', ['label' => 'Montant loyer', 'rules'=> 'required|numeric'])
             ->add('description', 'textarea', ['label' => 'Description', 'rules' => 'string'])
-            ->add('image', 'text',['label' => 'Image', 'rules' => 'image'])
+            //->add('image', 'file',['label' => 'Image', 'rules' => 'image'])
             ->add('submit', 'submit', ['label' => 'Enregistrer']);
     }
 }
