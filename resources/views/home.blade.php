@@ -81,7 +81,7 @@
                     @else
                         <tr>
                             <td colspan="6" class="text-info text-center">
-                                <strong>Aucun n'immeuble n'est enregistré.</strong>
+                                <strong>Aucun immeuble n'est enregistré.</strong>
                             </td>
                         </tr>
                     @endif
@@ -91,3 +91,4 @@
         </div>
     </div>
 @endsection
+

@@ -1,8 +1,9 @@
 <?php
 
 Auth::routes();
-
 //routes sur la vue welcome
+Route::get('/welcome', 'WelcomeController@index')->name('welcome');
+
 
 
 //routes sur les immeubles
@@ -25,4 +26,5 @@ Route::get('/', 'HomeController@index')->name('home');
 // Route::get('/immeubles', 'ImmeubleController@index')->name('immeubles');
 
 
+// Route::get('/immeubles', 'ImmeubleController@index')->name('immeubles');
 
