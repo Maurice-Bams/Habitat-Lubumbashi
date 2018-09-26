@@ -40,9 +40,19 @@
                         <li class="nav-item">
                             <a href="{{ route('immeubles.index') }}" class="nav-link">Immeubles</a>
                         </li>
+                         @if(!Auth::guest() && Auth::user()->isAdmin())
+                            <li class="nav-item">
+                                <a href="{{ route('users.index') }}" class="nav-link">Users</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
-                            <a href="{{ route('users.index') }}" class="nav-link">Utilisateurs</a>
+                            <a href="{{ route('bailleurs.index') }}" class="nav-link">Bailleurs</a>
                         </li>
+                        @if(!Auth::guest() && Auth::user()->isLocataire())
+                        <li class="nav-item">
+                            <a href="{{ route('immeubles.location') }}" class="nav-link">Locations</a>
+                        </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

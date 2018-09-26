@@ -46,8 +46,8 @@
 
                             <div class="col-md-6">
                                 <select name="type_compte" id="type_compte" class="form-control">
-                                    <option value="bailleur">Bailleur</option>
-                                    <option value="Locataire">Locataire</option>
+                                    <option value="3">Bailleur</option>
+                                    <option value="2">Locataire</option>
                                     
                                 </select>
 

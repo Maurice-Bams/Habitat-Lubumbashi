@@ -16,12 +16,12 @@ class ImmeubleController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
     
     public function index()
     {
-        $immeubles = Immeuble::paginate(10);
+        $immeubles = Immeuble::with('bailleur')->paginate(10);
         return View::make('immeuble.index', compact('immeubles'));
     }
 
@@ -44,8 +44,9 @@ class ImmeubleController extends Controller
                 ->withInput();
         }
         $immeuble = Immeuble::create($request->all());
-        $request->session()->flash('succsss', 'Votre immeuble a bien été enregistré.');
-        return redirect(route('immeuble.index', $immeuble));
+        $immeuble->update(['bailleur_id' => Auth::user()->id ]);
+        $request->session()->flash('succsss', 'Votre immeuble a bien été enregistrer.');
+        return redirect(route('immeubles.index', $immeuble));
 
     }
     
@@ -69,45 +70,9 @@ class ImmeubleController extends Controller
         return View::make('immeuble.show', compact('immeuble'));
     }
 
-    public function submit(Request $request)
+    public function destroy($id)
     {
-            //vérification des attributs
-            $this->validate($request, [
-
-                'ville'=> 'required',
-                'commune'=> 'required',
-                'quartier'=> 'required',
-                'avenue'=> 'required',
-                'numero'=> 'required',
-                'type_usage'=> 'required',
-                'nombre_pieces'=> 'required',
-                'superficie'=> 'required',
-                'montant_garantie'=> 'required',
-                'montant_loyer'=> 'required',
-                'image'=> 'required',
-                'description'=> 'required'
-
-            ]);
-            //création de l'immeuble
-            $immeuble = new Immeubles;
-            $immeuble->ville = $request->input('ville');
-            $immeuble->commune = $request->input ('commune');
-            $immeuble->quartier = $request->input('quartier');
-            $immeuble->avenue = $request->input('avenue');
-            $immeuble->numero = $request->input('numero');
-            $immeuble->type_usage = $request->input('type_usage');
-            $immeuble->nombre_pieces = $request->input('nombre_pieces');
-            $immeuble->superficie = $request->input('superficie');
-            $immeuble->montant_garantie = $request->input('montant_garantie');
-            $immeuble->montant_loyer = $request->input('montant_loyer');
-            $immeuble->image = $request->input('image');
-            $immeuble->description = $request->input('description');
-
-            //sauvegarde immeuble
-            $immeuble->save();
-
-            //redirection
-            return redirect('/confirmationSoumission');
-            
-    } 
+        Immeuble::destroy($id);
+        return redirect(route('immeubles.index'))->with('success', "l'action a reussit");
+    }
 }

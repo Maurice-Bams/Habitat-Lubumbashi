@@ -4,16 +4,23 @@
     <div class="row">
         <div class="col-12">
             <div class="page-header">
-                <h1>Liste des utilisateurs <a href="{{ route('users.index') }}" class="btn btn-info"><span class="fa fa-plus"><span> Ajouter</a></h1>
+                <h1>Liste d'immeubles 
+                    @guest 
+                    @else 
+                        @if(Auth::user()->role->title == "Bailleur")
+                            <a href="{{ route('immeubles.create') }}" class="btn btn-info"><span class="fa fa-plus"><span> Ajouter</a>
+                        @endif
+                    @endguest
+                </h1>
             </div>
             <table class="table table-hover table-sm table-bordered">
             	<thead class="thead-dark">
             		<tr>
                         <th>#</th>
                         <th>Nom</th>
-                        <th>Genre</th>
+                        <th>Email</th>
                         <th>Profession</th>
-                        <th>Type de compte</th>
+                        <th>Role</th>
                         <th>Options</th>
             		</tr>
             	</thead>
@@ -21,28 +28,26 @@
                     @if(count($users))
                         @foreach($users as $user)
                             <tr>
-                                <td>{{ $user->id }}</td>
+                                <td>{{ $loop->index }}</td>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->genre }}</td>
+                                <td>{{ $user->email }}</td>
                                 <td>{{ $user->profession }}</td>
-                                <td>{{ $user->type_compte }}</td>
+                                <td>{{ $user->role->title }}</td>
                                 <td>
-                                    @if($user->admin == "true")
-                                        <span class="text-success">Administrateur</span> 
-                                    @else
-                                        <span class="text-default">Normal</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-info-circle"></i></a>
-                                    <a href="#" class="btn btn-outline-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                    <form action="#" method="POST" style="display: inline-block;">
-                                        {{ csrf_field() }}
-                                        {{ method_field('delete') }}
-                                        <button class="btn btn-danger btn-sm">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-info-circle"></i> Details</a>
+                                    @guest
+                                    @else 
+                                        @if(Auth::user()->isAdmin())
+                                        <a href="#" class="btn btn-outline-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                        <form action="#" method="POST" style="display: inline-block;">
+                                            {{ csrf_field() }}
+                                            {{ method_field('delete') }}
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form>
+                                        @endif
+                                    @endguest
                                 </td>
                             </tr>
                         @endforeach

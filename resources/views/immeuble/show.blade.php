@@ -52,7 +52,7 @@
                             <td>{{ $immeuble->montant_loyer }}</td>                        
                         </tr>
                         <tr>
-                            <td>Erat</td>
+                            <td>Etat</td>
                             <td>
                                     @if($immeuble->verified == "1")
                                         <span class="text-success fa fa-check-circle"></span> 
@@ -63,6 +63,21 @@
                                     @endif
                             </td>                        
                         </tr>
+                        @if($immeuble->locataire)  
+                        <tr>
+                            <td>Sous location</td>
+                            <td>
+                                <span class="badge badge-success">OUI</span> par <strong>{{ $immeuble->locataire->name }}</strong>
+                            </td>
+                        </tr>
+                        @else 
+                        <tr>
+                            <td>Sous location</td>
+                            <td>
+                                <span class="badge badge-warning">Non</span>
+                            </td>
+                        </tr>
+                        @endif
                     </tbody>
                 </table>
                 

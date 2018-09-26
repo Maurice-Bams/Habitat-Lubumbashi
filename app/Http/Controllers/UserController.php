@@ -10,7 +10,7 @@ class UserController extends Controller
 {
 	public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -20,7 +20,7 @@ class UserController extends Controller
 	 */
 	public function index()
 	{
-		$users = User::paginate(6);
+		$users = User::with('role')->paginate(6);
 		return View::make('users.index', compact('users'));
 	}
 

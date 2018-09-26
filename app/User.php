@@ -8,8 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-    const REGULAR_USER = 'false';
-    const ADMIN_USER = 'true';
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +23,7 @@ class User extends Authenticatable
         'telephone', 
         'email', 
         'password',
-        'admin',
+        'role_id'
     ];
 
     /**
@@ -36,4 +34,38 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    
+    public function immeubles()
+    {
+        return $this->hasMany(Immeuble::class, 'bailleur_id');
+    }
+
+    public function location()
+    {
+        return $this->hasOne(Immeuble::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role->title == "Administrateur";
+    }
+
+    public function isLocataire()
+    {
+        return $this->role->title == "Locataire";
+    }
+
+    public function isBailleur()
+    {
+        return $this->role->title == "Bailleur";
+    }
+
+    public function getNumbreImmeubleLouerAttribute(){
+        return $this->immeubles()->has('locataire')->count();
+    }
 }

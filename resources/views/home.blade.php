@@ -3,37 +3,39 @@
 @section('content')
     <div class="row">
         <div class="col-sm-12">
-            <div class="page-header">
-                <h3>Ajouter un immeuble</h3>
-            </div>
-            {!! form_start($form) !!}
-            <div class="row">
-                <div class="col-sm-4">
-                    {!! form_row($form->ville) !!}
-                    {!! form_row($form->commune) !!}
-                    {!! form_row($form->quartier) !!}
-                    {!! form_row($form->numero) !!}
-                    {!! form_row($form->avenue) !!}
-                </div>
-                <div class="col-sm-4">
-                    {!! form_row($form->type_usage) !!}
-                    {!! form_row($form->nombre_piece) !!}
-                    {!! form_row($form->superficie) !!}
-                    {!! form_row($form->montant_garantie) !!}
-                    {!! form_row($form->montant_loyer) !!}
-                </div>
-                <div class="col-sm-4">
-                    {!! form_row($form->description) !!}
-            
-                </div>
-                <div class="col-sm-4">
-                    {!! form_rest($form) !!}
-                </div>
-            </div>
-        </form>            
-</div>
-
-            
+            @guest 
+            @else 
+                @if(Auth::user()->role->title == "Bailleur")
+                    <div class="page-header">
+                    <h3>Ajouter un immeuble</h3>
+                    </div>
+                    {!! form_start($form) !!}
+                    <div class="row">
+                        <div class="col-sm-4">
+                            {!! form_row($form->ville) !!}
+                            {!! form_row($form->commune) !!}
+                            {!! form_row($form->quartier) !!}
+                            {!! form_row($form->numero) !!}
+                            {!! form_row($form->avenue) !!}
+                        </div>
+                        <div class="col-sm-4">
+                            {!! form_row($form->type_usage) !!}
+                            {!! form_row($form->nombre_pieces) !!}
+                            {!! form_row($form->superficie) !!}
+                            {!! form_row($form->montant_garantie) !!}
+                            {!! form_row($form->montant_loyer) !!}
+                        </div>
+                        <div class="col-sm-4">
+                            {!! form_row($form->description) !!}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 offset-sm-4">
+                            {!! form_rest($form) !!}
+                        </div>
+                    </div>
+                @endif
+            @endguest
         </div>
         <div class="col-12">
             <div class="page-header">
@@ -66,7 +68,13 @@
                                 <td>{{ $immeuble->montant_garantie }} $</td>
                                 <td>@if($immeuble->verified == "1")<span class="badge badge-success">Oui</span>@else<span class="text-danger fa fa-exclamation-triangle"></span> <span class="badge badge-warning">En attente</span> @endif </td>
                                 <td>
-                                    <a href="{{ route('immeubles.show', ['id' => $immeuble->id ])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('immeubles.show', ['id' => $immeuble->id ])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Detail</a>
+                                    @guest 
+                                    @else 
+                                        @if(Auth::user()->role->title == "Locataire")
+                                            <a href="{{ route('paiements.louer', ['id' => $immeuble->id]) }}" class="btn btn-success"><span class="fa fa-money"><span> Louer</a>
+                                        @endif
+                                    @endguest
                                 </td>
                             </tr>
                         @endforeach
