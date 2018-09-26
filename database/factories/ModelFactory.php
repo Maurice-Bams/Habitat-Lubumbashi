@@ -47,6 +47,7 @@ $factory->define(App\Immeuble::class, function (Faker\Generator $faker) {
         'montant_loyer' => $faker->randomDigitNotNull,
         'image' => $faker->imageUrl($width = 640, $height = 480),
         'description' => $faker->paragraph($nbSentences = 1, $variableNbSentences = true),
-        'verified' => $verified = $faker->randomElement([App\Immeuble::UNVERIFIED_IMMEUBLE, App\Immeuble::VERIFIED_IMMEUBLE])
+        'verified' => $verified = $faker->randomElement([App\Immeuble::UNVERIFIED_IMMEUBLE, App\Immeuble::VERIFIED_IMMEUBLE]),
+        'bailleur_id' => $id = App\User::where('role_id', 3)->get()->random(1)->first()->id
     ];
 });

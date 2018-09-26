@@ -21,7 +21,7 @@ class ImmeubleController extends Controller
     
     public function index()
     {
-        $immeubles = Immeuble::paginate(10);
+        $immeubles = Immeuble::with('bailleur')->paginate(10);
         return View::make('immeuble.index', compact('immeubles'));
     }
 
@@ -44,8 +44,9 @@ class ImmeubleController extends Controller
                 ->withInput();
         }
         $immeuble = Immeuble::create($request->all());
+        $immeuble->update(['bailleur_id' => Auth::user()->id ]);
         $request->session()->flash('succsss', 'Votre immeuble a bien été enregistrer.');
-        return redirect(route('immeuble.index', $immeuble));
+        return redirect(route('immeubles.index', $immeuble));
 
     }
     
@@ -67,5 +68,11 @@ class ImmeubleController extends Controller
     {
         $immeuble = Immeuble::findOrFail($id);
         return View::make('immeuble.show', compact('immeuble'));
+    }
+
+    public function destroy($id)
+    {
+        Immeuble::destroy($id);
+        return redirect(route('immeubles.index'))->with('success', "l'action a reussit");
     }
 }

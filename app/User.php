@@ -39,6 +39,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+    
+    public function immeubles()
+    {
+        return $this->hasMany(Immeuble::class, 'bailleur_id');
+    }
 
     public function location()
     {
@@ -55,8 +60,12 @@ class User extends Authenticatable
         return $this->role->title == "Locataire";
     }
 
-    public function isBailleurs()
+    public function isBailleur()
     {
         return $this->role->title == "Bailleur";
+    }
+
+    public function getNumbreImmeubleLouerAttribute(){
+        return $this->immeubles()->has('locataire')->count();
     }
 }

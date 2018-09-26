@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
         for($i = 0; $i < count($roles); $i++) {
             DB::table('roles')->insert(['title' => $roles[$i]]);
         }
-        factory(Immeuble::class, 20)->create();
         factory(User::class, 6)->create();   
+        factory(Immeuble::class, 20)->create();
+        
     }
 }

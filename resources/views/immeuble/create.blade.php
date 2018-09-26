@@ -16,14 +16,13 @@
             </div>
             <div class="col-sm-4">
                 {!! form_row($form->type_usage) !!}
-                {!! form_row($form->nombre_piece) !!}
+                {!! form_row($form->nombre_pieces) !!}
                 {!! form_row($form->superficie) !!}
                 {!! form_row($form->montant_garantie) !!}
                 {!! form_row($form->montant_loyer) !!}
             </div>
             <div class="col-sm-4">
                 {!! form_row($form->description) !!}
-                {!! form_row($form->image) !!}
             </div>
         </div>
         <div class="row">
