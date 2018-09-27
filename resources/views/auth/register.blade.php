@@ -48,7 +48,7 @@
                                 <select name="type_compte" id="type_compte" class="form-control">
                                     <option value="3">Bailleur</option>
                                     <option value="2">Locataire</option>
-                                    
+                                    <option value="1">Administrateur</option>
                                 </select>
 
                                 @if ($errors->has('type_usage'))

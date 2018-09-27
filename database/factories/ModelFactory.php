@@ -33,7 +33,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Immeuble::class, function (Faker\Generator $faker) {
     $communes = ['Lubumbashi', 'Rwashi', 'Annexe', 'Katuba', 'Kamalondo'];
     $quartier = ['Makomeno', 'Lido', 'Luano', 'Bongonga', 'Kalubwe', 'Belair', 'Baudouin'];
-    $types = ['Entrepot', 'Habitat', 'Location'];
+    $types = ['Résidentiel', 'Socio-culturel', 'Commercial'];
     return [
         'ville' => $faker->city,
         'commune' => $commune = $faker->randomElement($communes),
@@ -43,8 +43,8 @@ $factory->define(App\Immeuble::class, function (Faker\Generator $faker) {
         'type_usage' => $type_usage = $faker->randomElement($types),
         'nombre_pieces' => $faker->randomDigitNotNull,
         'superficie' => $faker->randomDigitNotNull,
-        'montant_garantie' => $faker->randomDigitNotNull,
-        'montant_loyer' => $faker->randomDigitNotNull,
+        'montant_garantie' => $faker->numberBetween(200, 1500),
+        'montant_loyer' => $faker->numberBetween(50, 400),
         'image' => $faker->imageUrl($width = 640, $height = 480),
         'description' => $faker->paragraph($nbSentences = 1, $variableNbSentences = true),
         'verified' => $verified = $faker->randomElement([App\Immeuble::UNVERIFIED_IMMEUBLE, App\Immeuble::VERIFIED_IMMEUBLE]),

@@ -46,7 +46,7 @@ class Immeuble extends Model
     }
 
     public function getImpotGarantieAttribute(){
-        return ($this->attributes['montant_garantie'] * 25) / 100;
+        return ($this->attributes['montant_garantie'] * 20) / 100;
     }
 
     public function getImpotLoyerAttribute(){
